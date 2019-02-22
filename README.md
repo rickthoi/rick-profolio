@@ -1,4 +1,4 @@
-[Click Here To View Rick Webpage](www.rickthoi.com)
+[Click Here To View Rick Webpage](http://www.rickthoi.com)
 
 # Portfolio Website
 
