@@ -1,0 +1,227 @@
+@import "config";
+@import "menu";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include background;
+  background: $primary-color;
+  color: #fff;
+  // color: set-color-text($primary-color);
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+//Headings
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+  //nesting css
+  &.lg-heading {
+    //rem = 6*16px default html
+    font-size: 4rem;
+  }
+
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    //sass method lighten take in original color, lighten by 2
+    //rgba( , .5) opacity of the image behind
+    background: rgba(lighten($primary-color, 2), 0.5);
+    // background: lighten ($primary-color, 2);
+  }
+}
+
+//links
+a {
+  color: #fff;
+  text-decoration: none;
+  //use mixin - @include
+  @include easeOut;
+}
+
+header {
+  //always at the top
+  position: fixed;
+  //bigger the z index, the top layer it will be
+  z-index: 2;
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+
+  //   height: 100%;
+  //sticky footer calc() calculate the main content - height of footer
+  min-height: calc(100vh - 60px);
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4rem;
+      &:hover,
+      &:active {
+        color: $secondary-color;
+      }
+    }
+  }
+  &#home {
+    //no scrollbar
+    overflow: hidden;
+    h1 {
+      //20 slice of 100 slice of units
+      margin-top: 20vh;
+    }
+  }
+}
+
+//About Me
+//Grid template
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas: 
+    //bioimage 1 grid, bio 2 grids
+    "bioimage bio bio"
+    "about1 about2 about3";
+  grid-template-columns: repeat(3, 1fr);
+
+  //nest inside about info
+  //define grid area
+  .bio-image {
+    text-align: center;
+    grid-area: bioimage;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
+  }
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+  .about-1 {
+    grid-area: about1;
+  }
+  .about- {
+    grid-area: about2;
+  }
+  .about-3 {
+    grid-area: about3;
+  }
+  .about-icon,
+  .about-heading {
+    text-align: center;
+    margin: 1rem;
+  }
+  //style all abouts background
+  .about {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+}
+
+// Work/Projects
+.projects {
+  display: grid;
+  //3 img each column
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  .item {
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    // border: 3px #fff solid;
+    opacity: 0.5;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      opacity: 1;
+      // border-color: $secondary-color;
+      @include easeOut;
+      transform: scale(1.07);
+    }
+  }
+}
+
+// Contact page
+#contact {
+  overflow: hidden;
+  .boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+
+    div {
+      font-size: 2rem;
+      border: 3px #fff solid;
+      padding: 1.5rem 2.5rem;
+      margin-bottom: 3rem;
+      padding: 1rem;
+      @include easeOut;
+
+      &:hover {
+        padding: 0.5rem 1.5rem;
+        background: $secondary-color;
+        color: set-text-color($secondary-color);
+        span {
+          color: set-text-color($secondary-color);
+        }
+      }
+    }
+  }
+}
+
+// Buttons
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover,
+  &:active {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+// extend btn class ( inheritance )
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  // background: #444;
+  color: #fff;
+}
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  // background: #fff;
+  color: #333;
+}
+
+//style footer
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  color: set-text-color($primary-color);
+  height: 60px;
+}
+
+// mobile run after main css
+@import "mobile";

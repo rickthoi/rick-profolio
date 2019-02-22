@@ -1,0 +1,104 @@
+// Widescreens
+@include mediaXl {
+  // projects
+  .projects {
+    //4 columns at wide screens
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Desktops & Laptops
+@include mediaLg {
+  // projects
+  .projects {
+    //3 columns
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Tablets & Small Laptops
+@include mediaMd {
+  //   about md screen
+  .about-info {
+    grid-template-areas:
+      "bioimage"
+      "bio"
+      "about1"
+      "about2"
+      "about3";
+    // 1 single fraction
+    grid-template-columns: 1fr;
+  }
+  // projects
+  .projects {
+    //2 columns
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Smartphones
+@include mediaSm {
+  main#home h1 {
+    margin-top: 10vh;
+  }
+  // projects
+  .projects {
+    // 1 column
+    grid-template-columns: 1fr;
+  }
+  //overlay
+  main {
+    align-items: center;
+    text-align: center;
+    .lg-heading {
+      //smaller height space between the lg-heading text
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+  }
+  ul.menu-nav,
+  div.menu-branding {
+    float: none;
+    width: 100%;
+    min-height: 0;
+
+    &.show {
+      transform: translate(0, 0);
+    }
+  }
+
+  .menu-nav {
+    height: 75vh; //75 slices out of 100 vertical
+    transform: translate(-100%, 0); //slide right to left
+    font-size: 24px;
+  }
+  .menu-branding {
+    height: 25vh; //25 slices out of 100
+    transform: translate(100%, 0); // slide left to right
+    //smaller image
+    .portrait {
+      background: url("../img/RickPortrait.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  //   about mobile
+  .about-info {
+    grid-template-areas:
+      "bioimage"
+      "bio"
+      "about1"
+      "about2"
+      "about3";
+    // 1 single fraction
+    grid-template-columns: 1fr;
+  }
+  // projects
+  .projects {
+    // 1 column
+    grid-template-columns: 1fr;
+  }
+}
